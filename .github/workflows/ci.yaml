@@ -22,4 +22,4 @@ jobs:
       - name: Display Go version
         run: go version
       - name: Build Go Executable
-        run: go build -v ./workshop-service -o artifacts/workshop-service
+        run: go build -v ./... -o artifacts/workshop-service
