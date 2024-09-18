@@ -1,0 +1,25 @@
+name: Golang Build
+
+on:
+  push:
+    branches: "*"
+
+
+env:
+  DOCKER_REPOSITORY: tourna
+  DOCKER_IMAGE: aelm-workshop-23
+  GOLANG_VERSION: 1.21.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: $GOLANG_VERSION
+      - name: Display Go version
+        run: go version
+      - name: Build Go Executable
+        run: go build -v ./workshop-service -o artifacts/workshop-service
